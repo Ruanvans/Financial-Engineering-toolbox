@@ -4,7 +4,7 @@ at intermediate times. There is also a function that is used for
 calculating the present value of an investment */
 
 /* these code functions help a user in calculations related to basic fixed
- income securities, they are intended to be used in a */
+ income securities, they are intended to be used in a command line project */
 
 #include "pch.h"
 #include <iostream>
