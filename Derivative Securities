@@ -116,10 +116,49 @@ cout.precision(2);
 cout << "rate where swap equals zero: " << zero_rate << endl;
 }
 
+void One_period_option(void) {
+
+	double S;
+	cout << "enter the price of the stock: ";
+	cin >> S;
+	double R;
+	cout << "enter the value of R: ";
+	cin >> R;
+	double u;
+	cout << "enter the value of u: ";
+	cin >> u;
+	double d = 1 / u;
+	double Strike;
+	cout << "enter the Strike rate: ";
+	cin >> Strike;
+
+
+
+
+	double up = u * S;
+	double down = d * S;
+
+	double price_up = max(up - Strike, 0.0);
+	double price_down = max(0.0, down - Strike);
+
+	double option_up = ((R - d) / (u - d))* price_up;
+	double option_down = ((u - R) / (u - d))* price_down;
+
+	double price = (1 / R)*(option_up + option_down);
+
+	cout << fixed;
+	cout.precision(2);
+	cout << "value of the option is: " << price << endl;
+
+
+
+}
+
 
 int main()
-{
-	swap_rates();
+
+	//One_period_option();
+	//swap_rates();
 	//discount_factor();
 	//MVH();
 }
