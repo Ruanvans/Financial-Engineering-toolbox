@@ -34,13 +34,13 @@ void discount_factor(void) {
 
 void MVH(void) {
 	/* this method will be specifically aimed towards the question on the week 3 quiz regarding MVH
-	in the question we are given the standard deviation of the prices as percentages and a correlation coefficiant*/
+	in the question we are given the standard deviation of the prices as percentages and a correlation coefficient*/
 
 	/* the normal equation for calculating MVH is
 
 			y* = - cov(Ft, Pt)/ var(Ft)
 
-		the method we will use is a bit different as it takes into account the variable we have at hand
+		the method we will use is a bit different as it takes into account the variables we have at hand
 
 	*/
 	//the total size of the underlying
@@ -85,34 +85,35 @@ void MVH(void) {
 
 void swap_rates(void) {
 
-	int i;
-	cout << "enter amount of terms: ";
-	cin >>  i;
+int i;
+cout << "enter amount of terms: ";
+cin >>  i;
 
-	double term;
-	double disc;
-
-
-	vector<double> discount;
+double term;
+double disc;
 
 
-
-	for (int j = 0; j < i; j++) {
-		cin >> term;
-		term = term / 100;
-		disc = 1 / pow((1 + term), j+1);
-		discount.push_back(disc);
-
-	}
-
-	auto num = 1 - discount.back();
-	auto denom = accumulate(discount.begin(), discount.end(), 0.0);
-
-	auto zero_rate = (num / denom) * 100;
+vector<double> discount;
 
 
 
-	cout << "rate where swap equals zero: " << zero_rate << endl;
+for (int j = 0; j < i; j++) {
+cout << "interest rate for term " << j+1 << ": ";
+cin >> term;
+term = term / 100;
+disc = 1 / pow((1 + term), j+1);
+discount.push_back(disc);
+
+}
+
+auto num = 1 - discount.back();
+auto denom = accumulate(discount.begin(), discount.end(), 0.0);
+auto zero_rate = (num / denom) * 100;
+
+
+cout << fixed;
+cout.precision(2);
+cout << "rate where swap equals zero: " << zero_rate << endl;
 }
 
 
