@@ -181,7 +181,6 @@ void One_period_option(void) {
 
 		cout.fixed;
 			cout.precision(3);
-			cout << Cash_intr << endl;
 			cout << "The amount that needs to be invested in the cash account is: " << Cash << endl;
 
 
