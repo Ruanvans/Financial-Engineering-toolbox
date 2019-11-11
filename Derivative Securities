@@ -174,7 +174,7 @@ void One_period_option(void) {
 		//This will give us the value of X or the amount of stock we are buying.
 		double X = right_side / left_side;
 
-		// Similar to the line above where we isolate each side of the equation it is meant to aid in readibility
+		// Similar to the line above where we isolate each side of the equation it is meant to aid in readability
 		double Cash_intr = (price_up - ((Strike +(S*(u-R)))*X));
 		// here we isolate the value of y that gives us the amount of cash that we need to invest
 		double Cash = Cash_intr / R;
