@@ -7,8 +7,6 @@
 #include <cmath>
 #include <vector>
 #include <algorithm>
-
-
 using namespace std;
 
 void discount_factor(void) {
@@ -27,25 +25,26 @@ void discount_factor(void) {
 	cout << "time in years: ";
 	cin >> time;
 
-
 	df = 1 / (pow((1 + interest), time));
-
-
+	
 	cout.precision(3);
 	cout << "discount factor: " << df << endl;
 }
 
 void MVH(void) {
-	/* this method will be specifically aimed towards the question on the week 3 quiz regarding MVH
-	in the question we are given the standard deviation of the prices as percentages and a correlation coefficient*/
-
-	/* the normal equation for calculating MVH is
-
-			y* = - cov(Ft, Pt)/ var(Ft)
-
-		the method we will use is a bit different as it takes into account the variables we have at hand
-
+	/* 
+	this method will be specifically aimed towards the question on the week 3 quiz regarding MVH in the 
+	question we are given the standard deviation of the prices as percentages and a correlation coefficient
 	*/
+
+	/* 
+	the normal equation for calculating MVH is
+
+		y* = - cov(Ft, Pt)/ var(Ft)
+
+	the method we will use is a bit different as it takes into account the variables we have at hand
+	*/
+	
 	//the total size of the underlying
 	double size_t;
 	//size of the future contract
@@ -95,10 +94,7 @@ void swap_rates(void) {
 	double term;
 	double disc;
 
-
 	vector<double> discount;
-
-
 
 	for (int j = 0; j < i; j++) {
 		cout << "interest rate for term " << j + 1 << ": ";
@@ -135,9 +131,6 @@ void One_period_option(void) {
 	cout << "enter the Strike rate: ";
 	cin >> Strike;
 
-
-
-
 	double up = u * S;
 	double down = d * S;
 
@@ -153,40 +146,37 @@ void One_period_option(void) {
 	cout.precision(2);
 	cout << "value of the option is: " << price << endl;
 
-	/* this portion of the method will be used to calculate the cash that you need to invest in the cash account
-		Initially we have that we need to solve a simultaneous equation but given that R will always be the same for
-		each equation it lends itself nicely to substitution via elimination
+	/* 
+	this portion of the method will be used to calculate the cash that you need to invest in the cash account
+	Initially we have that we need to solve a simultaneous equation but given that R will always be the same for
+	each equation it lends itself nicely to substitution via elimination
 
+	our equations are as follows:
 
-		our equations are as follows:
+		where A = Price of the stock when it is up
+		where B = Price of the stock when it is down
 
-			where A = Price of the stock when it is up
-			where B = Price of the stock when it is down
+		Ax + Ry = Cu
+		Bx + Ry = Cd
 
-			Ax + Ry = Cu
-			Bx + Ry = Cd
+	from here we can isolate the X value and then plug that back into one of the formulas to find the value of y
 
-			from here we can isolate the X value and then plug that back into one of the formulas to find the value of y
+	*/
 
-
-		*/
-
-		// Isolating the values of each side of the equation to find X
+	// Isolating the values of each side of the equation to find X
 	double left_side = (S*(u - R)) - (S*(d - R));
 	double right_side = price_up - price_down;
 	//This will give us the value of X or the amount of stock we are buying.
 	double X = right_side / left_side;
 
 	// Similar to the line above where we isolate each side of the equation it is meant to aid in readability
-	double Cash_intr = (price_up - ((Strike + (S*(u - R)))*X));
+	double cash_intr = (price_up - ((Strike + (S*(u - R)))*X));
 	// here we isolate the value of y that gives us the amount of cash that we need to invest
-	double Cash = Cash_intr / R;
+	double cash = cash_intr / R;
 
 	cout.fixed;
 	cout.precision(3);
-	cout << "The amount that needs to be invested in the cash account is: " << Cash << endl;
-
-
+	cout << "The amount that needs to be invested in the cash account is: " << cash << endl;
 }
 
 
