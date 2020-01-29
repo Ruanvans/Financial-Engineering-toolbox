@@ -166,7 +166,7 @@ void One_period_option(void) {
 	// Isolating the values of each side of the equation to find X
 	double left_side = (S*(u - R)) - (S*(d - R));
 	double right_side = price_up - price_down;
-	//This will give us the value of X or the amount of stock we are buying.
+	//This will give us the value of X for the amount of stock we are buying.
 	double X = right_side / left_side;
 
 	// Similar to the line above where we isolate each side of the equation it is meant to aid in readability
